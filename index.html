@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>كل حاجة</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .add-button {
+            background: #222;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .category {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .category:hover {
+            background: #eeeeee;
+        }
+
+        @media (max-width: 700px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">كل حاجة</div>
+
+        <a href="add.html" class="add-button">
+            + أضف إعلان
+        </a>
+    </header>
+
+    <div class="container">
+
+        <h1>وش تدور عليه؟</h1>
+
+        <input
+            type="text"
+            class="search"
+            placeholder="ابحث عن سيارة، جوال، أثاث..."
+        >
+
+        <div class="categories">
+
+            <div class="category">🚗 سيارات</div>
+
+            <div class="category">📱 جوالات</div>
+
+            <div class="category">🏠 عقار</div>
+
+            <div class="category">🪑 أثاث</div>
+
+            <div class="category">💻 إلكترونيات</div>
+
+            <div class="category">👕 ملابس</div>
+
+            <div class="category">⚽ رياضة</div>
+
+            <div class="category">📦 أخرى</div>
+
+        </div>
+
+    </div>
+<section id="ads-section" style="max-width: 1100px; margin: 30px auto; padding: 20px;">
+    <h2>آخر الإعلانات</h2>
+
+    <div id="ads-list"></div>
+</section>
+<style>
+    .ad-card {
+        background: white;
+        border-radius: 14px;
+        overflow: hidden;
+        margin-top: 15px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+        border: 1px solid #eee;
+    }
+
+    .ad-image {
+        width: 100%;
+        height: 220px;
+        background: #eeeeee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+    }
+
+    .ad-content {
+        padding: 20px;
+    }
+
+    .ad-title {
+        font-size: 24px;
+        margin: 0 0 10px;
+    }
+
+    .ad-price {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .ad-category {
+        display: inline-block;
+        padding: 6px 12px;
+        background: #eeeeee;
+        border-radius: 20px;
+        margin-bottom: 12px;
+    }
+
+    .details-button {
+        display: block;
+        text-align: center;
+        background: #222;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 15px;
+    }
+</style>
+<script>
+    const savedAd = localStorage.getItem("myAd");
+
+    if (savedAd) {
+        const ad = JSON.parse(savedAd);
+
+        document.getElementById("ads-list").innerHTML = `
+            <div style="
+                background: white;
+                padding: 20px;
+                border-radius: 12px;
+                margin-top: 15px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            ">
+                <h3>${ad.title}</h3>
+                <p><strong>السعر:</strong> ${ad.price} ريال</p>
+                <p><strong>القسم:</strong> ${ad.category}</p>
+                <p>${ad.description}</p>
+                <p><strong>التواصل:</strong> ${ad.phone}</p>
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>
